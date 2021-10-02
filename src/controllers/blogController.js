@@ -63,7 +63,6 @@ exports.findBlogById = async (req, res, next) => {
 exports.findAllBlogs = async (req, res, next) => {
   try {
     const blogs = await BlogModel.find({
-      hasApproved: true,
       hasDeleted: false,
     }).populate({
       path: "user",
@@ -92,7 +91,7 @@ exports.findActiveBlogs = async (req, res, next) => {
 exports.findDisApprovedBlogs = async (req, res, next) => {
   try {
     const blogs = await BlogModel.find({
-      hasApproved: true,
+      hasApproved: false,
       hasDeleted: false,
     });
     return res
@@ -127,7 +126,8 @@ exports.softDeleteBlogById = async (req, res, next) => {
     await BlogModel.findOneAndUpdate(
       { _id: req.params.id },
       {
-        hasDeleted: false,
+        hasDeleted: true,
+        hasApproved: false,
       }
     );
     return res
