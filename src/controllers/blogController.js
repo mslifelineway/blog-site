@@ -63,6 +63,7 @@ exports.findBlogById = async (req, res, next) => {
 exports.findAllBlogs = async (req, res, next) => {
   try {
     const blogs = await BlogModel.find({
+      hasApproved: true,
       hasDeleted: false,
     }).populate({
       path: "user",
@@ -126,7 +127,6 @@ exports.softDeleteBlogById = async (req, res, next) => {
     await BlogModel.findOneAndUpdate(
       { _id: req.params.id },
       {
-        hasApproved: true,
         hasDeleted: false,
       }
     );
