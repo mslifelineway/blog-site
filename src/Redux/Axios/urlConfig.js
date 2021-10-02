@@ -1,5 +1,5 @@
 export const baseUrl =
-  window.location.hostname === "blog-today.herokuapp.com"
-    ? "https://blog-today.herokuapp.com"
-    : `http://localhost:5000`;
+  window.location.hostname === "localhost"
+    ? `http://localhost:5000`
+    : "https://blog-today.herokuapp.com";
 export const api = `${baseUrl}/api`;
