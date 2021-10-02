@@ -1,28 +1,12 @@
 require("dotenv").config();
-// require("./src/database/mongoose");
+require("./src/database/mongoose");
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
 const { errors, statusCodes } = require("./src/utls/constants");
-const mongoose = require("mongoose");
 const router = express.Router();
 
-const port = process.env.PORT || 4001;
-const host = process.env.HOST || "localhost";
-
-/* mongobd connections */
-
-mongoose
-  .connect(
-    `mongodb+srv://oyemukesh:OyeMukesh@123@cluster0.nhny3.mongodb.net/test?retryWrites=true&w=majority`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
-  .then(() => {
-    console.log("Database Connected");
-  });
+const port = process.env.PORT || 5000;
 
 const app = express();
 
@@ -45,7 +29,7 @@ app.use((err, req, res, next) => {
     },
   });
 });
-app.listen(port, host, (err) => {
+app.listen(port, (err) => {
   if (err) {
     console.log("\n--------------------------------------------------");
     console.log("\tserver not started due to : ", err);
