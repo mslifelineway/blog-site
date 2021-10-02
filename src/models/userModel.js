@@ -74,7 +74,7 @@ userSchema.methods.generateAccessAuthToken = async function () {
     const accessToken = await jwt.sign(
       { _id: this._id.toHexString(), role: this.role },
       process.env.JWT_SECRET_KEY,
-      { expiresIn: "3s" }
+      { expiresIn: "1d" }
     );
     return { accessToken };
   } catch (accessAuthTokenError) {

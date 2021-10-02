@@ -3,7 +3,7 @@ const {
   updateUserSchema,
   userLoginSchema,
 } = require("../schemaValidations/userSchemaValidation");
-const { statusCodes } = require("../utls/constants");
+const { statusCodes, roles } = require("../utls/constants");
 
 exports.validateSchema = async (req, res, next) => {
   try {
@@ -48,4 +48,9 @@ exports.loginValidation = async (req, res, next) => {
     }
     next(e);
   }
+};
+
+exports.registerAsAdmin = (req, res, next) => {
+  req.body.role = roles.admin;
+  next();
 };
