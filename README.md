@@ -1,2 +1,6 @@
-# jwt_auth
-API code of blog site
+# blog-site
+# Tech
+    Mongo Db,
+    Joi Schema Validation,
+    JWT authentication,
+    
