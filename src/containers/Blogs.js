@@ -21,27 +21,50 @@ const Blogs = () => {
             <Typography variant="h5" className={classes.heading}>
               Blogs
             </Typography>
-            {blogReducer.approvedBlogs.map((blog) => (
-              <Card key={blog._id} className={classes.card}>
-                <CardContent className={classes.cardContent}>
-                  <Typography variant="h6" className={classes.title}>
-                    {blog.title}
-                  </Typography>
-                  <Typography variant="body1" className={classes.content}>
-                    {blog.content}
-                  </Typography>
+            {blogReducer.approvedBlogs.length > 0 ? (
+              blogReducer.approvedBlogs.map((blog) => (
+                <Card key={blog._id} className={classes.card}>
+                  <CardContent className={classes.cardContent}>
+                    <Typography variant="h6" className={classes.title}>
+                      {blog.title}
+                    </Typography>
+                    <Typography variant="body1" className={classes.content}>
+                      {blog.content}
+                    </Typography>
 
+                    <Typography
+                      variant="body2"
+                      className={classes.details}
+                      align="right"
+                    >
+                      {`- ${blog.user.name}, `}
+                      {moment(blog.created_at).startOf("ss").fromNow()}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              ))
+            ) : (
+              <Card className={classes.card}>
+                <CardContent className={classes.cardContent}>
                   <Typography
-                    variant="body2"
-                    className={classes.details}
-                    align="right"
+                    variant="h6"
+                    className={classes.title}
+                    align="center"
                   >
-                    {`- ${blog.user.name}, `}
-                    {moment(blog.created_at).startOf("ss").fromNow()}
+                    No blogs found yet!
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    className={classes.content}
+                    style={{ marginTop: 20 }}
+                    align="center"
+                  >
+                    Only approved blogs will display here. <br />
+                    Blogs will be approved only by the Admin.
                   </Typography>
                 </CardContent>
               </Card>
-            ))}
+            )}
           </Grid>
         </Grid>
       </Layout>

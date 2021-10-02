@@ -10,7 +10,6 @@ import { pagePaths } from "./utils/constants";
 import {
   Login,
   AddUser,
-  Dashboard,
   Page404,
   Blogs,
   CreateBlog,
@@ -31,9 +30,7 @@ function App() {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
     }
-    // else {
     dispatch(getAllBlogs());
-    // }
   }, []);
 
   return (

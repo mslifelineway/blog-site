@@ -11,7 +11,7 @@ import {
   TableRow,
   Typography,
 } from "@material-ui/core";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import useStyles from "../styles/blogs.styles";
 import { Layout } from "../components";
 import { useDispatch, useSelector } from "react-redux";
